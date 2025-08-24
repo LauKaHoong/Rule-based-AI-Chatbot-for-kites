@@ -1,0 +1,49 @@
+{
+    "dddf": [
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Good Afternoon dddf, how may I help you?"
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "history"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Pakpao kites have their origins in Thailand's Sukhothai and Rattanakosin periods, where kite flying was not only a favored pastime but also a sport enjoyed by royalty and nobles. During these eras, kite flying competitions were hosted in royal courts, highlighting the grace and expertise required to skillfully maneuver the kites."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "history"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Pakpao kites date back to the Sukhothai and Rattanakosin periods in Thailand, where kite flying was not only a popular pastime but also a royal sport enjoyed by kings and nobles. During these periods, kite flying competitions were held at the royal courts, showcasing the elegance and skill involved in maneuvering the kites."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "history"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Would you like to play some game related to pakpaokite?\nIf so, type %puzzle and if you want to play the puzzle game or type %quiz if you want to play quiz game."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "%quiz"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Would you like to play some game related to pakpaokite?\nIf so, type %puzzle and if you want to play the puzzle game or type %quiz if you want to play quiz game."
+        }
+    ]
+}

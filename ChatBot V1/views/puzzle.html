@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kite Sliding Puzzle Game</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Poppins", sans-serif;
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+        .puzzle-board {
+            display: grid;
+            gap: 2px;
+            margin: 20px;
+            border: 2px solid #333;
+            background-color: #333;
+        }
+        .difficulty-buttons {
+            margin: 10px 0;
+        }
+        .tile {
+            background-image: url('static/image/Screenshot_2024-10-08_162614.png');
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .tile:hover {
+            transform: scale(0.98);
+        }
+        .empty {
+            background-image: none !important;
+            background-color: #ecf0f1;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button.active {
+            background-color: #e74c3c;
+        }
+        #placeholderImage {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        .exit-button {
+            background-color: blue;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1000;
+        }
+        .exit-button .material-symbols-outlined {
+            font-size: 36px;
+        }
+        .celebration-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        .confetti {
+            width: 8px;
+            height: 12px;
+            position: fixed;
+            top: 50%;
+        }
+        .confetti.left {
+            left: -10px;
+            animation: shoot-left 2s ease-out forwards;
+        }
+        .confetti.right {
+            right: -10px;
+            animation: shoot-right 2s ease-out forwards;
+        }
+        @keyframes shoot-left {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(500px) translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        @keyframes shoot-right {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-500px) translateY(-100px) rotate(-360deg);
+                opacity: 0;
+            }
+        }
+
+        .exit-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .exit-button:hover {
+            background-color: #2980b9;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .exit-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #2c3e50;
+            border: 2px solid #34495e;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 1002;
+            color: white;
+            text-align: center;
+        }
+
+        .exit-modal h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .exit-modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .exit-modal button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .exit-modal button.yes {
+            background-color: #e74c3c;
+        }
+
+        .exit-modal button.no {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Kite Sliding Puzzle</h1>
+        <div class="difficulty-buttons">
+            <button onclick="changeDifficulty(3)" id="btn3">Easy (3x3)</button>
+            <button onclick="changeDifficulty(4)" id="btn4">Hard (4x4)</button>
+        </div>
+        <button class="exit-button" onclick="showExitPrompt()">
+            <span class="material-symbols-outlined">exit_to_app</span>
+            Exit Game
+        </button>
+        <div class="overlay" id="overlay"></div>
+        <div class="exit-modal" id="exitModal">
+            <h2>Do you want to quit?</h2>
+            <div class="exit-modal-buttons">
+                <button class="yes" onclick="confirmExit()">Yes</button>
+                <button class="no" onclick="cancelExit()">No</button>
+            </div>
+        </div>
+        <img id="placeholderImage" src="static/image/Screenshot_2024-10-08_162614.png" alt="Complete Kite Image">
+        <div class="puzzle-board" id="puzzleBoard"></div>
+        <button onclick="shuffleTiles()">Shuffle</button>
+        <p id="moveCount">Moves: 0</p>
+        <p id="gameStatus"></p>
+        <div class="celebration-container" id="celebrationContainer"></div>
+    </div>
+    <script>
+        function showExitPrompt() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('exitModal').style.display = 'block';
+        }
+
+        function cancelExit() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('exitModal').style.display = 'none';
+        }
+
+        function confirmExit() {
+            window.location.href = '/';
+
+        }
+        let gridSize = 3;
+        let tiles = [];
+        let moveCount = 0;
+        let tileSize = 100;
+
+        function initializeTiles() {
+            tiles = Array.from({length: gridSize * gridSize - 1}, (_, i) => i);
+            tiles.push(null);
+            shuffleTiles();
+            return tiles;
+        }
+
+        function updateButtonStates() {
+            [3, 4].forEach(size => {
+                const btn = document.getElementById(`btn${size}`);
+                btn.classList.toggle('active', size === gridSize);
+            });
+        }
+
+        function changeDifficulty(size) {
+            gridSize = size;
+            tileSize = Math.floor(300 / gridSize);
+            updateButtonStates();
+            initializeTiles();
+            shuffleTiles();
+            createBoard();
+        }
+
+        function createBoard() {
+            const board = document.getElementById('puzzleBoard');
+            board.style.gridTemplateColumns = `repeat(${gridSize}, ${tileSize}px)`;
+            board.style.gridTemplateRows = `repeat(${gridSize}, ${tileSize}px)`;
+            board.innerHTML = '';
+
+            tiles.forEach((tile, index) => {
+                const tileElement = document.createElement('div');
+                tileElement.classList.add('tile');
+                tileElement.style.width = `${tileSize}px`;
+                tileElement.style.height = `${tileSize}px`;
+
+                if (tile === null) {
+                    tileElement.classList.add('empty');
+                } else {
+                    const row = Math.floor(tile / gridSize);
+                    const col = tile % gridSize;
+                    tileElement.style.backgroundSize = `${gridSize * tileSize}px ${gridSize * tileSize}px`;
+                    tileElement.style.backgroundPosition = `-${col * tileSize}px -${row * tileSize}px`;
+                    tileElement.onclick = () => moveTile(index);
+                }
+                board.appendChild(tileElement);
+            });
+        }
+
+        function moveTile(index) {
+            const emptyIndex = tiles.indexOf(null);
+            if (isAdjacent(index, emptyIndex)) {
+                [tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
+                moveCount++;
+                document.getElementById('moveCount').textContent = `Moves: ${moveCount}`;
+                createBoard();
+                checkWin();
+            }
+        }
+
+        function isAdjacent(index1, index2) {
+            const row1 = Math.floor(index1 / gridSize);
+            const col1 = index1 % gridSize;
+            const row2 = Math.floor(index2 / gridSize);
+            const col2 = index2 % gridSize;
+            return Math.abs(row1 - row2) + Math.abs(col1 - col2) === 1;
+        }
+
+        function shuffleTiles() {
+            for (let i = tiles.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+            }
+            moveCount = 0;
+            document.getElementById('moveCount').textContent = 'Moves: 0';
+            document.getElementById('gameStatus').textContent = '';
+            createBoard();
+        }
+
+        function createConfetti() {
+            const container = document.getElementById('celebrationContainer');
+            const colors = ['#ff718d', '#fdaf69', '#7fc7af', '#3f86ed', '#9b5de5'];
+
+            function createSingleConfetti(side) {
+                const confetti = document.createElement('div');
+                confetti.className = `confetti ${side}`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.top = `${30 + Math.random() * 40}%`;
+
+                container.appendChild(confetti);
+
+                setTimeout(() => {
+                    container.removeChild(confetti);
+                }, 1500);
+            }
+
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createSingleConfetti('left');
+                    createSingleConfetti('right');
+                }, i * 50);
+            }
+        }
+
+        function triggerCelebration() {
+            createConfetti();
+            const interval = setInterval(createConfetti, 2000);
+            setTimeout(() => clearInterval(interval), 5000);
+        }
+
+        function checkWin() {
+            const winningOrder = Array.from({ length: gridSize * gridSize - 1 }, (_, i) => i).concat([null]);
+            if (JSON.stringify(tiles) === JSON.stringify(winningOrder)) {
+                document.getElementById('gameStatus').textContent = 'Congratulations! You completed the puzzle!';
+                triggerCelebration();
+            }
+        }
+        // Quit button event listener
+        document.querySelector('.yes').addEventListener('click', () => {
+            sessionStorage.setItem('returnToChat', 'true'); // Set a flag to indicate returning to chat
+            window.location.href = '/'; // Redirect to your chatbot page
+        });
+
+        //calls functions that sets up the games
+        initializeTiles();
+        updateButtonStates();
+        createBoard();
+    </script>
+</body>
+</html>

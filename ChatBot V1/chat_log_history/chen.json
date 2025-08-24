@@ -1,0 +1,49 @@
+{
+    "chen": [
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "The Pakpao kite, a traditional Thai flying instrument, is renowned for its pivotal role in Thai kite competitions, where it represents the 'female' kite."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Characterized by its distinctive diamond shape and elongated tail, the Pakpao kite demonstrates remarkable maneuverability in aerial environments."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Characterized by its distinctive diamond shape and elongated tail, the Pakpao kite demonstrates remarkable maneuverability in aerial environments."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Would you like to play some game related to pakpaokite?\nIf so, type %puzzle and if you want to play the puzzle game or type %quiz if you want to play quiz game. If you want to play later you can press the button at the bottom right."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "%puzzle"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "We will start the puzzle game now"
+        }
+    ]
+}

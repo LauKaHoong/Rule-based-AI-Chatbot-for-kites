@@ -1,0 +1,19 @@
+{
+    "sssss": [
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Good Afternoon sssss, how may I help you?"
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "hallo"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Could you rephrase that? I'm here to help!"
+        }
+    ]
+}

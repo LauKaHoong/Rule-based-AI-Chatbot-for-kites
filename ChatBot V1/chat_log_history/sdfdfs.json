@@ -1,0 +1,19 @@
+{
+    "sdfdfs": [
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "sdfdfs Go to sleep"
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "sad"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Could you rephrase that? I'm here to help!"
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "namepls": [
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Good Afternoon namepls, how may I help you?"
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "The Pakpao kite is a traditional Thai kite known for its role in Thai kite competitions, representing the 'female' kite."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "The Pakpao kite is a traditional Thai kite known for its role in Thai kite competitions, representing the 'female' kite."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "The Pakpao kite is a traditional Thai kite known for its role in Thai kite competitions, representing the 'female' kite."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Would you like to play some game related to pakpaokite?\n Type please yes if you want to play type no if you don't want to."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "yes"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Welcome! What would you like to discuss today?"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "hello": [
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "%puzzle"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "That\u2019s interesting, but I\u2019m not certain how to respond."
+        }
+    ]
+}

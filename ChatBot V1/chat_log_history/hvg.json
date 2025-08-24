@@ -1,0 +1,39 @@
+{
+    "hvg": [
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Good Afternoon hvg, how may I help you?"
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Pakpao kites have a unique diamond shape and long tail, allowing them to maneuver skillfully in the air."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Pakpao kites have a unique diamond shape and long tail, allowing them to maneuver skillfully in the air."
+        },
+        {
+            "user": "user",
+            "image": null,
+            "chatlog": "what is pakpaokite"
+        },
+        {
+            "user": "bot",
+            "image": null,
+            "chatlog": "Would you like to play some game related to pakpaokite?\n Type please yes if you want to play type no if you don't want to."
+        }
+    ]
+}
